@@ -8,11 +8,16 @@ import { MatSliderModule } from '@angular/material/slider';
 import { DemoMaterialModule } from './material.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AdminComponent } from './admin/admin.component';
+import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
+import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
