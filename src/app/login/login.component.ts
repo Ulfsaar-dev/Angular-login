@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
         return;
     }
     if (this.loginForm.value.username === "admin" && this.loginForm.value.password === "123") {
-      
+      alert("Admin login");
     } else if (this.loginForm.value.username === "user" && this.loginForm.value.password === "123") {
-      
+      alert("User login");
     } else {
       alert("Username or Password is invalid.");
     }
