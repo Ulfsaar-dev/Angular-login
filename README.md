@@ -1,2 +1,0 @@
-# Angular-login
-Login Project
