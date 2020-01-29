@@ -10,9 +10,7 @@ const adminRoutes: Routes = [
         {
           path: '',
           children: [
-            { path: 'crises'},
-            { path: 'heroes'},
-            { path: ''}
+
           ]
         }
       ]

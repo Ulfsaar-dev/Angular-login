@@ -26,6 +26,8 @@ import { UserComponent } from './user/user.component';
     DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    UserModule,
+    AdminModule,
     MatSliderModule
   ],
   providers: [],

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthGuard } from '../_helpers/auth.guard';
+import { AuthService } from '../_helpers/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,8 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     
   constructor( private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router) { 
+    public authService: AuthService, 
+    public router: Router) { 
     
   }
 
@@ -37,9 +38,25 @@ export class LoginComponent implements OnInit {
         return;
     }
     if (this.loginForm.value.username === "admin" && this.loginForm.value.password === "123") {
-      alert("Admin login");
+      this.authService.login("admin").subscribe(() => {
+        if (this.authService.isLoggedIn === "admin") {
+          // Get the redirect URL from our auth service
+          // If no redirect has been set, use the default
+          let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/admin';
+          // Redirect the user
+          this.router.navigateByUrl(redirect);
+        }
+      });
     } else if (this.loginForm.value.username === "user" && this.loginForm.value.password === "123") {
-      alert("User login");
+      this.authService.login("user").subscribe(() => {
+        if (this.authService.isLoggedIn === "user") {
+          // Get the redirect URL from our auth service
+          // If no redirect has been set, use the default
+          let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/user';
+          // Redirect the user
+          this.router.navigateByUrl(redirect);
+        }
+      });
     } else {
       alert("Username or Password is invalid.");
     }
