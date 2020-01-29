@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const userRoutes: Routes = [
-  { path: 'heroes' },
-  { path: 'hero/:id' }
+
 ];
 
 @NgModule({
